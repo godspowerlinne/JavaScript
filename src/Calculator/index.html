@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator App</title>
+    <link rel="stylesheet" href="/src/output.css">
+</head>
+<body>
+    <div class="container h-[600px] md:h-[650px] bg-[#7373cc8c] m-auto md:w-[520px] w-[100%] p-8 rounded-md my-8">
+        <h1 class="w-max m-auto font-semibold  text-black p-3 mb-4 rounded text-[28px] md:text-[35px] lg:text-[45px]">Simple Calculator</h1>
+        <div class=" h-[100px] w-[100%] m-auto  relative">
+            <input type="text" id="resultInput" placeholder="0" disabled class="absolute bottom-0 right-0 p-3 text-right w-full text-[24px] font-bold rounded-b-md text-black bg-[#f5f5f5]">
+            <input type="text" id="valueInput" placeholder="|" class="p-3 w-full rounded-t-md bg-[#f5f5f5]" disabled>
+        </div>
+        <div class="inputs p-6 md:px-0 md:py-8 flex justify-between " >
+            <div class=" w-[45%] md:w-[221px] flex flex-col">
+                <label for="firstInput" class="bg-white/35 text-[8px] font-bold md:p-4 p-2 rounded-ss-[30%]  ms-auto ring-1 ring-black">First Input :</label>
+                <input type="number" id="firstInput" class="md:p-3 p-2 rounded-md ring-1 ring-black">
+            </div>
+            <div class=" w-[45%] md:w-[221px] flex flex-col">
+                <label for="lastInput" class="bg-white/35 text-[8px] font-bold md:p-4 p-2 rounded-se-[30%]  me-auto ring-1 ring-black">Last Input :</label>
+                <input type="number" id="lastInput" class="md:p-3 p-2 rounded-md ring-1 ring-black">
+            </div>
+        </div>
+        <p id="validator" class="h-4 md:h-[50px] text-center font-semibold text-red-600 uppercase"></p>
+        <div class="buttons grid grid-cols-2 justify-center gap-8 p-6 md:p-0">
+            <button id="addBtn" class=" transition-all hover:bg-green-700/55 bg-green-700/85 active:bg-green-700/70 text-[20px]  font-bold p-5 ring-1 ring-black rounded-md">+</button>
+            <button id="subtractBtn" class="hover:bg-yellow-700/55 bg-yellow-700/85 active:bg-yellow-700/70 text-[20px]  font-bold p-5 ring-1 ring-black rounded-md">-</button>
+        </div>
+        <div class="buttons grid grid-cols-1 justify-center gap-8 p-6 md:p-0 md:py-6">
+            <button id="clearBtn" class="hover:bg-red-700/55 bg-red-700/85 active:bg-red-700/70 text-[25px] uppercase font-bold p-5 ring-1 ring-black rounded-md">clear</button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
