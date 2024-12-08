@@ -1,16 +1,3 @@
-// document.getElementById('addButton').addEventListener('click', function() {
-//     const num1 = parseFloat(document.getElementById('input1').value);
-//     const num2 = parseFloat(document.getElementById('input2').value);
-//     const result = num1 + num2;
-//     document.getElementById('result').innerText = 'Result: ' + result;
-// });
-
-// document.getElementById('subtractButton').addEventListener('click', function() {
-//     const num1 = parseFloat(document.getElementById('input1').value);
-//     const num2 = parseFloat(document.getElementById('input2').value);
-//     const result = num1 - num2;
-//     document.getElementById('result').innerText = 'Result: ' + result;
-// });
 // Initialising the variables 
 
 const add = document.getElementById('addBtn');
@@ -25,10 +12,18 @@ const validator = document.getElementById('validator');
 // Event listeners for each button
 
 add.addEventListener('click', () => {
+    let firstInputvalue = parseFloat(firstInput.value);
+    let lastInputvalue = parseFloat(lastInput.value);
     if (firstInput.value === '' && lastInput.value === '') {
         validator.textContent = 'You have not input a number !';
     }else if (firstInput.value === '' || lastInput.value === '') {
         validator.textContent = 'Please enter both numbers !';
+    }else if (isNaN(firstInputvalue && isNaN(lastInputvalue))) {
+        validator.textContent = 'Please enter valid numbers !';
+    }else if  (isNaN(firstInputvalue)) {
+        validator.textContent = 'Please enter valid first number !'; 
+    }else if (isNaN(lastInputvalue)) {
+    validator.textContent = 'Please enter valid last number !';
     }
     else {
         validator.textContent = '';
@@ -41,6 +36,12 @@ subtract.addEventListener('click', () => {
         validator.textContent = 'You have not input a number !';
     }else if (firstInput.value === '' || lastInput.value === '') {
         validator.textContent = 'Please enter both numbers !';
+    }else if (isNaN(firstInputvalue && isNaN(lastInputvalue))) {
+        validator.textContent = 'Please enter valid numbers !';
+    }else if  (isNaN(firstInputvalue)) {
+        validator.textContent = 'Please enter valid first number !';
+    }else if (isNaN(lastInputvalue)) {
+    validator.textContent = 'Please enter valid last number !';
     }
     else {
         validator.textContent = '';
@@ -55,3 +56,6 @@ clear.addEventListener('click', () => {
     valueInput.value = '';
     validator.textContent = '';
 });
+if (firstInputValue.length && firstInputValue.length.contains('a') ) {
+    alert('Invalid input!');
+}
