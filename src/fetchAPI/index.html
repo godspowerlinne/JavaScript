@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #calculator {
+        width: 300px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      #history {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="calculator">
+      <h2>Calculator</h2>
+      <input type="number" id="num1" placeholder="Number 1" />
+      <input type="number" id="num2" placeholder="Number 2" />
+      <button id="add">+</button>
+      <button id="subtract">-</button>
+      <button id="multiply">*</button>
+      <button id="divide">/</button>
+      <p id="result"></p>
+      <div id="history">history</div>
+    </div>
+    <script>
+      // calculator.js
+      class Calculator {
+        constructor() {
+          this.history = [];
+        }
+
+        add(num1, num2) {
+          let result = num1 + num2;
+          this.history.push(`Added ${num1} and ${num2}, result = ${result}`);
+          return result;
+        }
+
+        subtract(num1, num2) {
+          let result = num1 - num2;
+          this.history.push(
+            `Subtracted ${num2} from ${num1}, result = ${result}`
+          );
+          return result;
+        }
+
+        multiply(num1, num2) {
+          let result = num1 * num2;
+          this.history.push(
+            `Multiplied ${num1} and ${num2}, result = ${result}`
+          );
+          return result;
+        }
+
+        divide(num1, num2) {
+          if (num2 === 0) {
+            throw new Error("Cannot divide by zero");
+          }
+          let result = num1 / num2;
+          this.history.push(`Divided ${num1} by ${num2}, result = ${result}`);
+          return result;
+        }
+
+        printHistory() {
+          let historyElement = document.getElementById("history");
+          historyElement.innerHTML = "";
+          this.history.forEach((entry) => {
+            let paragraph = document.createElement("p");
+            paragraph.textContent = entry;
+            historyElement.appendChild(paragraph);
+          });
+        }
+      }
+
+      let calculator = new Calculator();
+
+      document.getElementById("add").addEventListener("click", () => {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        let result = calculator.add(num1, num2);
+        document.getElementById("result").textContent = `Result: ${result}`;
+        calculator.printHistory();
+      });
+
+      document.getElementById("subtract").addEventListener("click", () => {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        let result = calculator.subtract(num1, num2);
+        document.getElementById("result").textContent = `Result: ${result}`;
+        calculator.printHistory();
+      });
+
+      document.getElementById("multiply").addEventListener("click", () => {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        let result = calculator.multiply(num1, num2);
+        document.getElementById("result").textContent = `Result: ${result}`;
+        calculator.printHistory();
+      });
+
+      document.getElementById("divide").addEventListener("click", () => {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        try {
+          let result = calculator.divide(num1, num2);
+          document.getElementById("result").textContent = `Result: ${result}`;
+          calculator.printHistory();
+        } catch (error) {
+          document.getElementById("result").textContent = error.message;
+        }
+      });
+    </script>
+  </body>
+</html>
